@@ -46,42 +46,6 @@ It then visualizes everything as map markers on a fixed terrain map, with hover 
 
 ---
 
-## Repository structure
-
-```text
-/backend
-    server.py
-    seed_mongo.py
-    upload_s3_sample.py
-/frontend
-    /static
-        index.html
-        app.js
-        styles.css
-        terrain-map.svg
-/data
-    manual_reports.json
-    osint_mongo.json
-    osint_s3.json
-    simulated_feed.json
-/cloud_samples
-    mongo_seed.json
-    s3_osint_batch.json
-/docs
-    README.md
-    SETUP_AND_CONFIG.md
-    PRODUCTION_DEPLOYMENT.md
-    ISSUES_FIXED_SUMMARY.md
-    QUICK_REFERENCE.md
-.gitignore
-.env.example
-requirements.txt
-sample_upload.csv
-uploads/
-```
-
----
-
 ## Run the project
 
 ### 1. Install dependencies
@@ -94,15 +58,6 @@ pip install -r requirements.txt
 python backend/server.py
 ```
 
-### 3. Open the dashboard
-Open this URL in your browser:
-```
-http://127.0.0.1:8000
-```
-
----
-
-## How it works
 
 ### Ingestion
 
@@ -153,37 +108,5 @@ That upload creates a new IMINT marker on the map.
 ### Filters
 Use the sidebar checkboxes and dropdowns to filter intelligence by type and source.
 
----
-
-## Live mode setup
-
-### Configure environment variables
-Copy `.env.example` to `.env` and update values.
-Example:
-```powershell
-$env:MONGO_URI="mongodb://localhost:27017"
-$env:MONGO_DB_NAME="intelligence"
-$env:MONGO_COLLECTION="osint_records"
-$env:AWS_DEFAULT_REGION="us-east-1"
-$env:AWS_S3_BUCKET="your-osint-bucket"
-$env:AWS_S3_PREFIX="osint/"
-```
-
-### Seed live sources
-```powershell
-python backend/seed_mongo.py
-python backend/upload_s3_sample.py
-```
-
----
-
-## API Endpoints
-
-- `GET /api/intelligence`
-- `GET /api/source-status`
-- `POST /api/upload/dataset`
-- `POST /api/upload/image`
-
----
 
 
