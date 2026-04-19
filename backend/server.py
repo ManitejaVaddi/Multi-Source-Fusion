@@ -558,7 +558,7 @@ class FusionDashboardHandler(BaseHTTPRequestHandler):
             self.send_json(get_source_status())
             return
         if parsed.path.startswith("/uploads/"):
-            target = BASE_DIR / parsed.path.lstrip("/")
+            target = REPO_ROOT / parsed.path.lstrip("/")
             self.serve_file(target)
             return
 
@@ -694,7 +694,7 @@ class FusionDashboardHandler(BaseHTTPRequestHandler):
 
     def serve_file(self, target):
         target = target.resolve()
-        allowed_roots = [STATIC_DIR.resolve(), (BASE_DIR / "uploads").resolve()]
+        allowed_roots = [STATIC_DIR.resolve(), (REPO_ROOT / "uploads").resolve()]
         if not target.exists() or not any(str(target).startswith(str(root)) for root in allowed_roots):
             self.send_error(404, "File not found")
             return

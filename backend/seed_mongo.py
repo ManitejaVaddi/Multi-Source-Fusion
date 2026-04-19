@@ -6,7 +6,8 @@ from pymongo import MongoClient
 
 
 BASE_DIR = Path(__file__).resolve().parent
-SEED_FILE = BASE_DIR / "cloud_samples" / "mongo_seed.json"
+REPO_ROOT = BASE_DIR.parent
+SEED_FILE = REPO_ROOT / "cloud_samples" / "mongo_seed.json"
 
 
 def main():

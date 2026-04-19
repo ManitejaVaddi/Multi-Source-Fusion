@@ -5,7 +5,8 @@ import boto3
 
 
 BASE_DIR = Path(__file__).resolve().parent
-SAMPLE_FILE = BASE_DIR / "cloud_samples" / "s3_osint_batch.json"
+REPO_ROOT = BASE_DIR.parent
+SAMPLE_FILE = REPO_ROOT / "cloud_samples" / "s3_osint_batch.json"
 
 
 def main():
