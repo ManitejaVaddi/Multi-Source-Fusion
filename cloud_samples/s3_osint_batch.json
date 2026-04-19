@@ -1,0 +1,34 @@
+{
+  "records": [
+    {
+      "id": "s3-live-1",
+      "intelType": "OSINT",
+      "sourceName": "AWS S3 OSINT",
+      "title": "River Route Monitoring Snapshot",
+      "description": "Archived external report indicates movement along the river-adjacent route.",
+      "lat": 36.5,
+      "lon": 49.3,
+      "timestamp": "2026-04-18T11:00:00Z",
+      "confidence": 72,
+      "metadata": {
+        "origin": "archive",
+        "region": "central-river"
+      }
+    },
+    {
+      "id": "s3-live-2",
+      "intelType": "OSINT",
+      "sourceName": "AWS S3 OSINT",
+      "title": "Supply Chain Mention",
+      "description": "Stored feed artifact references fuel stockpiling in the southeast zone.",
+      "lat": 74.1,
+      "lon": 84.7,
+      "timestamp": "2026-04-18T11:20:00Z",
+      "confidence": 66,
+      "metadata": {
+        "origin": "batch-feed",
+        "region": "southeast"
+      }
+    }
+  ]
+}

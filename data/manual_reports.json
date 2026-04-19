@@ -1,0 +1,109 @@
+[
+  {
+    "id": "humint-1",
+    "intelType": "HUMINT",
+    "sourceName": "Field Debrief",
+    "title": "Checkpoint Observation",
+    "description": "Witness reports repeated vehicle movement after sunset near the northern route.",
+    "lat": 20.0,
+    "lon": 24.0,
+    "timestamp": "2026-04-18T12:00:00Z",
+    "confidence": 82,
+    "imagePath": "",
+    "metadata": {
+      "reportType": "debrief"
+    },
+    "priority": "HIGH",
+    "markerShape": "square",
+    "tags": [
+      "movement"
+    ]
+  },
+  {
+    "id": "imint-1",
+    "intelType": "IMINT",
+    "sourceName": "Imagery Library",
+    "title": "Ridge Activity Capture",
+    "description": "Reference imagery for the elevated ridge line area.",
+    "lat": 42.0,
+    "lon": 56.0,
+    "timestamp": "2026-04-18T12:30:00Z",
+    "confidence": 88,
+    "imagePath": "/sample-imagery.svg",
+    "metadata": {
+      "sensor": "satellite"
+    },
+    "priority": "HIGH",
+    "markerShape": "diamond",
+    "tags": [
+      "imagery",
+      "surveillance"
+    ]
+  },
+  {
+    "id": "cc21b3f2-ee2f-4d3d-9ff0-6962046352e3",
+    "intelType": "IMINT",
+    "sourceName": "Field Imagery Upload",
+    "title": "New Imagery Node",
+    "description": "Satellite imagery uploaded by analyst.",
+    "lat": 42.0,
+    "lon": 56.0,
+    "timestamp": "2026-04-18T14:13:45.924577+00:00",
+    "confidence": 70,
+    "imagePath": "/uploads/images/39fc4f17998440938562efb0d93e607b.png",
+    "metadata": {
+      "filename": "Group 2.png",
+      "uploadedAt": "2026-04-18T14:13:45.924504+00:00"
+    },
+    "priority": "MEDIUM",
+    "markerShape": "diamond",
+    "tags": [
+      "imagery",
+      "surveillance"
+    ]
+  },
+  {
+    "id": "4396349a-f3bd-44a3-bb6a-d6a450c36e38",
+    "intelType": "IMINT",
+    "sourceName": "Field Imagery Upload",
+    "title": "New Imagery Node",
+    "description": "Satellite imagery uploaded by analyst.",
+    "lat": 42.0,
+    "lon": 56.0,
+    "timestamp": "2026-04-18T14:14:16.964383+00:00",
+    "confidence": 70,
+    "imagePath": "/uploads/images/e3d4479cb5724590a7aa4227f8ab4b55.png",
+    "metadata": {
+      "filename": "Group 2.png",
+      "uploadedAt": "2026-04-18T14:14:16.964276+00:00"
+    },
+    "priority": "MEDIUM",
+    "markerShape": "diamond",
+    "tags": [
+      "imagery",
+      "surveillance"
+    ]
+  },
+  {
+    "id": "efd6e557-06e1-4226-a3bd-43cd6ce71760",
+    "intelType": "IMINT",
+    "sourceName": "Validation Upload",
+    "title": "Test Imagery Upload",
+    "description": "Validation image for upload flow check.",
+    "lat": 61.0,
+    "lon": 37.0,
+    "timestamp": "2026-04-18T14:17:08.703445+00:00",
+    "confidence": 84,
+    "imagePath": "/uploads/images/2678da89343c403895b3eceda9196550.png",
+    "metadata": {
+      "filename": "39fc4f17998440938562efb0d93e607b.png",
+      "uploadedAt": "2026-04-18T14:17:08.703374+00:00"
+    },
+    "priority": "HIGH",
+    "markerShape": "diamond",
+    "tags": [
+      "imagery",
+      "surveillance"
+    ]
+  }
+]

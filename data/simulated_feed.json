@@ -1,0 +1,88 @@
+[
+  {
+    "id": "d0b7d723-b33e-4f9a-8bd0-78c1fe1a574a",
+    "intelType": "OSINT",
+    "sourceName": "Simulated S3 Feed",
+    "title": "Automated Feed Alert",
+    "description": "Automated ingestion detected possible supply movement near the eastern corridor.",
+    "lat": 71.0,
+    "lon": 27.0,
+    "timestamp": "2026-04-18T14:07:46.831139+00:00",
+    "confidence": 86,
+    "imagePath": "",
+    "metadata": {
+      "feedType": "s3-mock",
+      "mode": "simulated"
+    },
+    "priority": "HIGH",
+    "markerShape": "circle",
+    "tags": [
+      "logistics",
+      "movement"
+    ]
+  },
+  {
+    "id": "26ebcf77-73f1-49a4-ac53-57d0fce2f214",
+    "intelType": "HUMINT",
+    "sourceName": "Simulated Field Feed",
+    "title": "Field Observer Update",
+    "description": "Human source reported vehicle regrouping along the river approach.",
+    "lat": 37.0,
+    "lon": 36.0,
+    "timestamp": "2026-04-18T14:07:46.831161+00:00",
+    "confidence": 62,
+    "imagePath": "",
+    "metadata": {
+      "feedType": "humint-mock",
+      "mode": "simulated"
+    },
+    "priority": "MEDIUM",
+    "markerShape": "square",
+    "tags": [
+      "movement"
+    ]
+  },
+  {
+    "id": "2a45663a-6338-4166-832d-bde1a5d5398c",
+    "intelType": "OSINT",
+    "sourceName": "Simulated S3 Feed",
+    "title": "Automated Feed Alert",
+    "description": "Automated ingestion detected possible supply movement near the eastern corridor.",
+    "lat": 69.0,
+    "lon": 42.0,
+    "timestamp": "2026-04-18T14:22:44.099768+00:00",
+    "confidence": 84,
+    "imagePath": "",
+    "metadata": {
+      "feedType": "s3-mock",
+      "mode": "simulated"
+    },
+    "priority": "HIGH",
+    "markerShape": "circle",
+    "tags": [
+      "logistics",
+      "movement"
+    ]
+  },
+  {
+    "id": "418ec396-9cc9-42bd-a90b-68baba895af6",
+    "intelType": "HUMINT",
+    "sourceName": "Simulated Field Feed",
+    "title": "Field Observer Update",
+    "description": "Human source reported vehicle regrouping along the river approach.",
+    "lat": 52.0,
+    "lon": 79.0,
+    "timestamp": "2026-04-18T14:22:44.099792+00:00",
+    "confidence": 77,
+    "imagePath": "",
+    "metadata": {
+      "feedType": "humint-mock",
+      "mode": "simulated"
+    },
+    "priority": "MEDIUM",
+    "markerShape": "square",
+    "tags": [
+      "movement"
+    ]
+  }
+]

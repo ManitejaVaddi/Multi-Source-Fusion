@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strategic Fusion Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div>
+          <p class="eyebrow">Problem Statement 1</p>
+          <h1>Strategic Fusion Dashboard</h1>
+          <p class="lede">
+            Unified OSINT, HUMINT, and IMINT visualization on a fixed terrain map with hover-based inspection.
+          </p>
+        </div>
+
+        <section class="card">
+          <h2>Dataset Ingestion</h2>
+          <form id="dataset-form">
+            <label>
+              Source Name
+              <input type="text" name="sourceName" value="Manual HUMINT Upload" />
+            </label>
+            <label>
+              Intelligence Type
+              <select name="intelType">
+                <option value="HUMINT">HUMINT</option>
+                <option value="OSINT">OSINT</option>
+                <option value="IMINT">IMINT</option>
+              </select>
+            </label>
+            <div class="dropzone" data-target-input="dataset-file">
+              <strong>Dataset Drop Zone</strong>
+              <span>Drop CSV / JSON / XLSX here or click to browse</span>
+              <input id="dataset-file" type="file" name="file" accept=".csv,.json,.xlsx" required />
+              <p class="drop-hint" data-drop-label>No file selected</p>
+            </div>
+            <button type="submit">Upload Dataset</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>IMINT Upload</h2>
+          <form id="image-form">
+            <label>
+              Title
+              <input type="text" name="title" value="New Imagery Node" />
+            </label>
+            <label>
+              Source Name
+              <input type="text" name="sourceName" value="Field Imagery Upload" />
+            </label>
+            <label class="split">
+              <span>
+                Latitude
+                <input type="number" step="0.01" name="lat" value="42" required />
+              </span>
+              <span>
+                Longitude
+                <input type="number" step="0.01" name="lon" value="56" required />
+              </span>
+            </label>
+            <label>
+              Description
+              <textarea name="description" rows="3">Satellite imagery uploaded by analyst.</textarea>
+            </label>
+            <div class="dropzone" data-target-input="image-file">
+              <strong>Imagery Drop Zone</strong>
+              <span>Drop JPG / JPEG / PNG / WEBP here or click to browse</span>
+              <input id="image-file" type="file" name="file" accept=".jpg,.jpeg,.png,.webp" required />
+              <p class="drop-hint" data-drop-label>No file selected</p>
+            </div>
+            <button type="submit">Upload Image</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Filters</h2>
+          <div class="filter-group">
+            <label class="filter-check">
+              <input type="checkbox" id="filter-osint" checked />
+              <span><i class="dot osint"></i> Show OSINT</span>
+            </label>
+            <label class="filter-check">
+              <input type="checkbox" id="filter-humint" checked />
+              <span><i class="dot humint"></i> Show HUMINT</span>
+            </label>
+            <label class="filter-check">
+              <input type="checkbox" id="filter-imint" checked />
+              <span><i class="dot imint"></i> Show IMINT</span>
+            </label>
+          </div>
+          <label>
+            Source Filter
+            <select id="source-filter">
+              <option value="ALL">All Sources</option>
+            </select>
+          </label>
+          <label>
+            Tag Filter
+            <select id="tag-filter">
+              <option value="ALL">All Tags</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="card stats">
+          <h2>Operational Summary</h2>
+          <div id="stats"></div>
+          <p id="status" class="status">Loading intelligence picture...</p>
+        </section>
+
+        <section class="card">
+          <h2>Operations</h2>
+          <div class="action-stack">
+            <button id="simulate-feed-btn" type="button">Simulate Live Feed</button>
+            <button id="toggle-refresh-btn" type="button" class="secondary-btn">Start Auto Refresh</button>
+            <div class="export-row">
+              <a id="export-json" class="action-link" href="/api/intelligence?format=json" download="fusion-dashboard-export.json">Export JSON</a>
+              <a id="export-csv" class="action-link" href="/api/intelligence?format=csv" download="fusion-dashboard-export.csv">Export CSV</a>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <main class="main-panel">
+        <div class="map-header">
+          <div>
+            <p class="eyebrow">Common Operating Picture</p>
+            <h2>Fixed Terrain Theater Map</h2>
+          </div>
+          <div class="legend">
+            <span><i class="shape osint circle"></i> OSINT</span>
+            <span><i class="shape humint square"></i> HUMINT</span>
+            <span><i class="shape imint diamond"></i> IMINT</span>
+          </div>
+        </div>
+
+        <section class="map-card">
+          <div id="map" class="map"></div>
+        </section>
+      </main>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

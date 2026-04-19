@@ -1,0 +1,3 @@
+title,description,lat,lon,confidence,intelType,sourceName
+Safehouse Mention,Local source indicated unusual meeting activity,58,33,71,HUMINT,Manual HUMINT Upload
+Open Broadcast,Intercepted public radio chatter discussing fuel movement,48,72,64,OSINT,Manual OSINT Upload

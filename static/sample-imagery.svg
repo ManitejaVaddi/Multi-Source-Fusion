@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#263b28"/>
+      <stop offset="100%" stop-color="#101e14"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#bg)"/>
+  <path d="M0 280 L150 160 L280 240 L420 110 L600 260 L600 360 L0 360 Z" fill="#66583b"/>
+  <circle cx="390" cy="170" r="44" fill="#ff695b" opacity="0.8"/>
+  <circle cx="390" cy="170" r="92" fill="#ff695b" opacity="0.18"/>
+  <text x="24" y="34" fill="#d8ebd7" font-family="Segoe UI, sans-serif" font-size="20">IMINT Preview</text>
+  <text x="24" y="62" fill="#d8ebd7" font-family="Segoe UI, sans-serif" font-size="14">Detected thermal signature near ridge transit corridor</text>
+</svg>

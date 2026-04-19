@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mongo-live-1",
+    "intelType": "OSINT",
+    "sourceName": "MongoDB OSINT",
+    "title": "Cross-Border Logistics Signal",
+    "description": "Open-source chatter suggests vehicle staging near the northwest corridor.",
+    "lat": 67.2,
+    "lon": 21.4,
+    "timestamp": "2026-04-18T09:30:00Z",
+    "confidence": 77,
+    "metadata": {
+      "platform": "social",
+      "tags": ["logistics", "vehicles", "corridor"]
+    }
+  },
+  {
+    "id": "mongo-live-2",
+    "intelType": "OSINT",
+    "sourceName": "MongoDB OSINT",
+    "title": "Communications Pattern Change",
+    "description": "Publicly visible communication bursts increased in the east sector.",
+    "lat": 41.8,
+    "lon": 73.6,
+    "timestamp": "2026-04-18T10:05:00Z",
+    "confidence": 69,
+    "metadata": {
+      "platform": "radio-monitor",
+      "tags": ["communications", "east-sector"]
+    }
+  }
+]

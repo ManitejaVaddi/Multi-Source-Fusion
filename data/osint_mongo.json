@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mongo-1",
+    "intelType": "OSINT",
+    "sourceName": "MongoDB OSINT",
+    "title": "Social Chatter Spike",
+    "description": "Public posts indicate unusual logistics activity near the western ridge.",
+    "lat": 64,
+    "lon": 18,
+    "timestamp": "2026-04-18T10:10:00Z",
+    "confidence": 68,
+    "metadata": {
+      "collection": "osint_feeds",
+      "keywords": ["logistics", "convoy", "ridge"]
+    }
+  },
+  {
+    "id": "mongo-2",
+    "intelType": "OSINT",
+    "sourceName": "MongoDB OSINT",
+    "title": "Newswire Alert",
+    "description": "Local reporting references infrastructure damage along the central river path.",
+    "lat": 30,
+    "lon": 46,
+    "timestamp": "2026-04-18T10:45:00Z",
+    "confidence": 74,
+    "metadata": {
+      "collection": "osint_feeds",
+      "language": "en"
+    }
+  }
+]

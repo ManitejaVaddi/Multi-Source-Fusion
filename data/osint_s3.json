@@ -1,0 +1,17 @@
+[
+  {
+    "id": "s3-1",
+    "intelType": "OSINT",
+    "sourceName": "AWS S3 OSINT",
+    "title": "Archived Signal Snapshot",
+    "description": "S3-stored monitoring artifact suggests elevated radio use in the southeast sector.",
+    "lat": 78,
+    "lon": 81,
+    "timestamp": "2026-04-18T11:15:00Z",
+    "confidence": 61,
+    "metadata": {
+      "bucket": "strategic-osint-archive",
+      "objectKey": "captures/apr18/signal-9.json"
+    }
+  }
+]
