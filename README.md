@@ -58,6 +58,13 @@ pip install -r requirements.txt
 python backend/server.py
 ```
 
+## Live Demo
+
+Open the live demo at:
+
+```text
+https://multi-source-fusion.onrender.com
+```
 
 ### Ingestion
 
@@ -92,21 +99,4 @@ Markers are colored and shaped by intelligence type:
 - IMINT = diamond
 
 Hovering a marker opens a popup with full metadata and image preview if available.
-
----
-
-## Local demo usage
-
-### Upload a dataset
-Use the **Dataset Ingestion** form and upload `sample_upload.csv` or any supported file.
-Supported fields: `title`, `description`, `lat`, `lon`, `confidence`, `intelType`, `sourceName`.
-
-### Upload an image
-Use the **IMINT Upload** form and provide latitude, longitude, and imagery.
-That upload creates a new IMINT marker on the map.
-
-### Filters
-Use the sidebar checkboxes and dropdowns to filter intelligence by type and source.
-
-
 
