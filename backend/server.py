@@ -32,10 +32,12 @@ try:
 except ImportError:
     jwt = None
 
-BASE_DIR = Path(__file__).resolve().parent
-STATIC_DIR = BASE_DIR / "static"
-DATA_DIR = BASE_DIR / "data"
-UPLOADS_DIR = BASE_DIR / "uploads" / "images"
+BACKEND_DIR = Path(__file__).resolve().parent
+REPO_ROOT = BACKEND_DIR.parent
+
+STATIC_DIR = REPO_ROOT / "frontend" / "static"
+DATA_DIR = REPO_ROOT / "data"
+UPLOADS_DIR = REPO_ROOT / "uploads" / "images"
 MANUAL_REPORTS_FILE = DATA_DIR / "manual_reports.json"
 
 # ========== SERVER CONFIGURATION ==========

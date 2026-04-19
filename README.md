@@ -1,158 +1,181 @@
 # Strategic Fusion Dashboard
 
-A web-based intelligence fusion platform that ingests OSINT, HUMINT, and IMINT from multiple sources and visualizes them on a unified fixed-terrain geospatial dashboard.
+A web-based intelligence fusion dashboard that unifies OSINT, HUMINT, and IMINT into a single, interactive geospatial interface.
 
-The app supports two modes:
+The project solves the problem of fragmented intelligence data by ingesting information from:
+- local samples
+- MongoDB
+- AWS S3
+- CSV / JSON / XLSX
+- image uploads
 
-- `sample mode`: runs instantly with local sample data
-- `live mode`: connects to real `MongoDB` and `AWS S3` when configured
+It then visualizes everything as map markers on a fixed terrain map, with hover popups for metadata and imagery inspection.
+
+---
+
+## Demo status
+
+- **Demo mode**: runs immediately with local sample data
+- **Live mode**: supports MongoDB + AWS S3 when environment variables are configured
+- **Production readiness**: backend and frontend are separated, and the repo is organized for clarity
+
+---
 
 ## Features
 
-- Unified ingestion for `MongoDB`, `AWS S3`, `CSV`, `JSON`, `XLSX`, and imagery
-- Python backend APIs for ingestion, normalization, and retrieval
-- `Leaflet`-based fixed terrain map with interactive intelligence markers
-- Hover-based popups for metadata and image preview
-- Drag-and-drop upload zones for field reports and imagery
-- Source and intelligence-type filters for operational analysis
-- Fallback sample datasets for offline demos and interviews
+- Multi-source ingestion: `MongoDB`, `AWS S3`, `CSV`, `JSON`, `XLSX`, image uploads
+- Unified data normalization into one schema
+- Fixed terrain map using `Leaflet.js`
+- Interactive markers with hover popups
+- Drag-and-drop dataset and imagery upload
+- Filters by intelligence type and source
+- Status and export controls
+- Optional auto-refresh and live feed simulation
+
+---
 
 ## Tech Stack
 
-- `Python 3`
-- `http.server`
-- `pymongo`
-- `boto3`
-- `Leaflet.js`
-- `HTML`
-- `CSS`
-- `JavaScript`
+- Python 3
+- `http.server` backend
+- `pymongo` for MongoDB
+- `boto3` for AWS S3
+- `PyJWT` for token support
+- `Leaflet.js` for mapping
+- HTML, CSS, JavaScript for frontend
 
+---
 
-## Screenshots
-
-Add screenshots here after you run the project.
-
-- Suggested shot 1: full dashboard view with markers visible
-- Suggested shot 2: hover popup showing IMINT preview
-- Suggested shot 3: dataset upload section with sample ingestion
-
-You can save them in a folder like:
+## Repository structure
 
 ```text
-screenshots/
+/backend
+    server.py
+    seed_mongo.py
+    upload_s3_sample.py
+/frontend
+    /static
+        index.html
+        app.js
+        styles.css
+        terrain-map.svg
+/data
+    manual_reports.json
+    osint_mongo.json
+    osint_s3.json
+    simulated_feed.json
+/cloud_samples
+    mongo_seed.json
+    s3_osint_batch.json
+/docs
+    README.md
+    SETUP_AND_CONFIG.md
+    PRODUCTION_DEPLOYMENT.md
+    ISSUES_FIXED_SUMMARY.md
+    QUICK_REFERENCE.md
+.gitignore
+.env.example
+requirements.txt
+sample_upload.csv
+uploads/
 ```
 
-And reference them here later:
+---
 
-```md
-![Dashboard](screenshots/dashboard.png)
-![Hover Popup](screenshots/hover-popup.png)
-```
+## Run the project
 
-## Setup
-
-### 1. Install dependencies for live cloud/database mode
-
-If you want real `MongoDB` and `S3` support, install:
-
-powershell
+### 1. Install dependencies
+```powershell
 pip install -r requirements.txt
+```
 
+### 2. Run the backend
+```powershell
+python backend/server.py
+```
 
-If you only want the demo version, you can skip that step.
+### 3. Open the dashboard
+Open this URL in your browser:
+```
+http://127.0.0.1:8000
+```
 
-### 2. Configure environment variables for live mode
+---
 
-Use [.env.example](c:/Users/Maniteja/Desktop/New%20folder/.env.example) as reference.
+## How it works
 
-Set these in PowerShell before running:
+### Ingestion
 
+The backend loads intelligence records from several sources:
+- `data/osint_mongo.json` and `data/osint_s3.json` for demo-mode samples
+- `data/manual_reports.json` for manual uploads
+- `data/simulated_feed.json` for simulated live data
+- MongoDB documents when configured
+- JSON files in S3 when configured
+
+Incoming records are normalized into a common schema with fields like:
+- `intelType`
+- `sourceName`
+- `title`
+- `description`
+- `lat`, `lon`
+- `confidence`
+- `imagePath`
+- `metadata`
+
+### Processing
+
+The backend normalizes raw data and enriches it with default values, inferred tags, and marker shape metadata.
+It also supports manual dataset ingestion, image upload ingestion, and optional MongoDB/S3 persistence.
+
+### Visualization
+
+The frontend loads `/api/intelligence` and renders every record as a marker on a fixed terrain map.
+Markers are colored and shaped by intelligence type:
+- OSINT = circle
+- HUMINT = square
+- IMINT = diamond
+
+Hovering a marker opens a popup with full metadata and image preview if available.
+
+---
+
+## Local demo usage
+
+### Upload a dataset
+Use the **Dataset Ingestion** form and upload `sample_upload.csv` or any supported file.
+Supported fields: `title`, `description`, `lat`, `lon`, `confidence`, `intelType`, `sourceName`.
+
+### Upload an image
+Use the **IMINT Upload** form and provide latitude, longitude, and imagery.
+That upload creates a new IMINT marker on the map.
+
+### Filters
+Use the sidebar checkboxes and dropdowns to filter intelligence by type and source.
+
+---
+
+## Live mode setup
+
+### Configure environment variables
+Copy `.env.example` to `.env` and update values.
+Example:
 ```powershell
 $env:MONGO_URI="mongodb://localhost:27017"
 $env:MONGO_DB_NAME="intelligence"
 $env:MONGO_COLLECTION="osint_records"
-$env:AWS_DEFAULT_REGION="ap-south-1"
+$env:AWS_DEFAULT_REGION="us-east-1"
 $env:AWS_S3_BUCKET="your-osint-bucket"
 $env:AWS_S3_PREFIX="osint/"
+```
 
-### 3. Optional: seed live sources with sample data
-
-To seed MongoDB with example OSINT records:
-
+### Seed live sources
 ```powershell
-python seed_mongo.py
+python backend/seed_mongo.py
+python backend/upload_s3_sample.py
 ```
 
-To upload example OSINT JSON into your S3 bucket:
-
-```powershell
-python upload_s3_sample.py
-```
-
-Files used:
-
-- [cloud_samples/mongo_seed.json](c:/Users/Maniteja/Desktop/New%20folder/cloud_samples/mongo_seed.json)
-- [cloud_samples/s3_osint_batch.json](c:/Users/Maniteja/Desktop/New%20folder/cloud_samples/s3_osint_batch.json)
-
-
-
-### Upload dataset files
-
-Use the **Dataset Ingestion** form on the left side.
-
-You can:
-
-- drag and drop a file into the dataset drop zone
-- click the drop zone to browse manually
-
-Supported columns for `CSV`, `JSON`, or `XLSX`:
-
-- `title`
-- `description`
-- `lat`
-- `lon`
-- `confidence`
-- `intelType`
-- `sourceName`
-
-You can test quickly with:
-
-```text
-sample_upload.csv
-```
-
-### Upload imagery
-
-Use the **IMINT Upload** form.
-
-You can:
-
-- drag and drop an image into the imagery drop zone
-- click the drop zone to browse manually
-
-Required:
-
-- image file
-- latitude
-- longitude
-
-Optional:
-
-- title
-- source name
-- description
-
-After upload, the image becomes a new IMINT marker on the map.
-
-### Filter intelligence records
-
-Use the filter panel to:
-
-- show or hide `OSINT`, `HUMINT`, and `IMINT`
-- filter markers by source name
-
-This makes it easier to inspect one intelligence stream at a time.
+---
 
 ## API Endpoints
 
@@ -161,34 +184,6 @@ This makes it easier to inspect one intelligence stream at a time.
 - `POST /api/upload/dataset`
 - `POST /api/upload/image`
 
-## Live source format expectations
+---
 
-### MongoDB documents
 
-Each document should roughly follow:
-
-```json
-{
-  "id": "mongo-101",
-  "intelType": "OSINT",
-  "sourceName": "MongoDB OSINT",
-  "title": "Activity report",
-  "description": "Observed pattern",
-  "lat": 34.5,
-  "lon": 72.1,
-  "timestamp": "2026-04-18T10:10:00Z",
-  "confidence": 80,
-  "imagePath": "",
-  "metadata": {
-    "channel": "social"
-  }
-}
-```
-
-### S3 objects
-
-Each S3 JSON file may contain:
-
-- a single object
-- an array of objects
-- an object with a top-level `records` array
